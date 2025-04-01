@@ -1,7 +1,3 @@
-import type { UserConfig } from '@commitlint/types';
+import { commitLintFront } from '@alebat/default-alebat-config';
 
-const Configuration: UserConfig = {
-  extends: ['@commitlint/config-conventional'],
-};
-
-export default Configuration;
+export default commitLintFront;
