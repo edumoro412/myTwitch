@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
+  <div class="usericon">
     <svg
       width="24"
       height="24"
@@ -26,4 +26,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.usericon {
+  @include flex();
+}
+</style>

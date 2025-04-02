@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
+  <div class="options">
     <svg
       width="24"
       height="24"
@@ -24,4 +24,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.options {
+  @include flex();
+}
+</style>

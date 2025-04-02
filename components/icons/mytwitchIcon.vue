@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
+  <div class="icon">
     <svg
-      width="48"
-      height="48"
+      width="35"
+      height="35"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -37,4 +37,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.icon {
+  @include flex();
+}
+</style>
