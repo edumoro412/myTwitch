@@ -12,7 +12,7 @@ import userIcon from '~/components/icons/userIcon.vue';
       <span class="header__left">
         <mytwitchIcon alt="Icono de myTwitch" />
         <span class="header__left--name">
-          <p>MIDUTCH</p>
+          <p>MYTWITCH</p>
         </span>
         <optionsIcon alt="Icono de opciones" />
       </span>
@@ -34,14 +34,14 @@ import userIcon from '~/components/icons/userIcon.vue';
 
 <style lang="scss">
 .header {
-  @include flex($justify-content: space-between);
-  @include responsive();
   background-color: $color-secondary;
   color: white;
   padding-left: 0.5em;
   padding-right: 0.5em;
   height: 4em;
   width: 100%;
+  @include flex($justify-content: space-between);
+  @include responsive();
 
   &__left {
     @include flex($justify-content: left, $flex-grow: 0);
@@ -56,12 +56,12 @@ import userIcon from '~/components/icons/userIcon.vue';
   }
 
   &__center {
-    @include flex($justify-content: center, $flex-grow: 0);
     width: auto;
     align-items: center;
     background-color: #2f2f34;
     border-radius: 0.5em;
     padding-right: 0.5em;
+    @include flex($justify-content: center, $flex-grow: 0);
 
     @media (max-width: 732px) {
       width: 12em;
@@ -74,9 +74,9 @@ import userIcon from '~/components/icons/userIcon.vue';
     }
 
     &--input {
-      @include input($background-color: $color-secondary, $color: grey);
       width: 20em;
       height: 3.5em;
+      @include input($background-color: $color-secondary, $color: grey);
 
       @media (max-width: 732px) {
         width: 11em;
@@ -124,7 +124,7 @@ import userIcon from '~/components/icons/userIcon.vue';
       }
 
       &:hover {
-        background-color: adjust-color($color, $lightness: -5%);
+        background-color: #1d1d1d;
       }
     }
 
