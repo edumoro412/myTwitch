@@ -33,18 +33,26 @@ import userIcon from '~/components/icons/userIcon.vue';
 
 <style lang="scss">
 .header {
+  @include flex($justify-content: space-between);
+  @include responsive();
   background-color: $color-secondary;
   color: white;
   padding-left: 0.5em;
   padding-right: 0.5em;
   height: 4em;
-  @include flex($justify-content: space-between);
-
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 1;
   &__left {
     @include flex($justify-content: left, $flex-grow: 0);
+    min-width: 0;
+    flex-shrink: 1;
     &--name {
       font-weight: bold;
       font-size: 1.2em;
+      @media (max-width: 732px) {
+        display: none;
+      }
     }
   }
   &__center {
@@ -54,6 +62,16 @@ import userIcon from '~/components/icons/userIcon.vue';
     background-color: #2f2f34;
     border-radius: 0.5em;
     padding-right: 0.5em;
+    min-width: 0;
+    flex-shrink: 1;
+    @media (max-width: 732px) {
+      width: 12em;
+      height: 2em;
+    }
+    @media (max-width: 600px) {
+      width: 8em;
+      height: 2em;
+    }
     &--input {
       background-color: $color-secondary;
       width: 20em;
@@ -62,6 +80,14 @@ import userIcon from '~/components/icons/userIcon.vue';
       height: 3.5em;
       border-radius: 0.5em;
       color: grey;
+      @media (max-width: 732px) {
+        width: 11em;
+        height: 100%;
+      }
+      @media (max-width: 600px) {
+        width: 8em;
+        height: 100%;
+      }
     }
     &--search {
       background-color: $color-tertiary;
@@ -70,11 +96,24 @@ import userIcon from '~/components/icons/userIcon.vue';
       padding: 0.5em;
       border-radius: 0.5em;
       margin: 0.2em;
+      @media (max-width: 732px) {
+        margin: 0;
+        width: 8em;
+        height: 2em;
+        padding: 0;
+      }
+      @media (max-width: 600px) {
+        margin: 0;
+        width: 2em;
+        height: 2em;
+        padding-right: 0.3em;
+      }
     }
   }
 
   &__right {
     @include flex($justify-content: right, $flex-grow: 0);
+    flex-shrink: 1;
     &--login {
       background-color: $color-tertiary;
       border: none;
@@ -83,6 +122,10 @@ import userIcon from '~/components/icons/userIcon.vue';
       cursor: pointer;
       padding: 0.6em 1em;
       border-radius: 0.3em;
+      @media (max-width: 500px) {
+        font-size: 0.5em;
+      }
+
       &:hover {
         background-color: darken($color: $color-tertiary, $amount: 5);
       }
@@ -95,6 +138,9 @@ import userIcon from '~/components/icons/userIcon.vue';
       background-color: #179afc;
       border: none;
       cursor: pointer;
+      @media (max-width: 500px) {
+        font-size: 0.5em;
+      }
 
       &:hover {
         background-color: #0e6fb8;
