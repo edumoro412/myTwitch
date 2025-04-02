@@ -8,7 +8,6 @@ import NavComponent from '~/components/layout/NavComponent.vue';
     <main class="main">
       <NavComponent />
       <section>
-        <h2>Aqui va el slot</h2>
         <slot />
       </section>
     </main>
