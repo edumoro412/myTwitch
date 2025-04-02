@@ -15,7 +15,7 @@ import userIcon from '~/components/icons/userIcon.vue';
         </span>
         <optionsIcon alt="Icono de opciones" />
       </span>
-      <form class="header__center">
+      <form class="header__center" name="search">
         <input type="text" placeholder="Search" class="header__center--input" />
         <button class="header__center--search">
           <searchIcon alt="Icono de búsqueda" />
