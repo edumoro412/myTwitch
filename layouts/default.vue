@@ -13,41 +13,26 @@ import userIcon from '~/components/icons/userIcon.vue';
         <span class="header__left--name">MIDUTCH</span>
         <optionsIcon />
       </span>
-      <span class="header__center">
+      <form class="header__center">
         <input type="text" placeholder="Search" class="header__center--input" />
-        <span class="header__input--lupa"><searchIcon /> </span>
+        <button class="header__center--search"><searchIcon /></button>
+      </form>
+      <span class="header__right">
+        <crownIcon />
+        <button>Log In</button>
+        <button>Sign Up</button>
+        <userIcon />
       </span>
-      <span class="header__right"></span>
-      <crownIcon />
-      <button>Log In</button>
-      <button>Sign Up</button>
-      <userIcon />
     </header>
   </div>
 </template>
 
 <style lang="scss">
-$color: #18181b;
-
-@mixin flex(
-  $direction: row,
-  $wrap: nowrap,
-  $justify-content: center,
-  $align-items: center,
-  $gap: 0.5em
-) {
-  display: flex;
-  flex-wrap: $wrap;
-  justify-content: $justify-content;
-  align-items: $align-items;
-  gap: $gap;
-}
-
 .header {
-  background-color: $color;
-  height: 4em;
+  background-color: $color-secondary;
   color: white;
   padding-left: 0.5em;
+  height: 4em;
   @include flex($justify-content: left);
 
   &__left {
@@ -57,19 +42,33 @@ $color: #18181b;
     }
   }
   &__center {
-    display: flex;
+    @include flex($justify-content: left, $flex-grow: 0);
+    width: auto;
     align-items: center;
     background-color: #2f2f34;
     border-radius: 0.5em;
     padding-right: 0.5em;
     &--input {
-      background-color: $color;
+      background-color: $color-secondary;
       width: 20em;
       padding: 0.5em;
       border: 1px solid #59585c;
       height: 3.5em;
       border-radius: 0.5em;
+      color: grey;
     }
+    &--search {
+      background-color: $color-tertiary;
+      border: none;
+      cursor: pointer;
+      padding: 0.5em;
+      border-radius: 0.5em;
+      margin: 0.2em;
+    }
+  }
+
+  &__right {
+    @include flex($justify-content: right);
   }
 }
 </style>
