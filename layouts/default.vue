@@ -9,19 +9,23 @@ import userIcon from '~/components/icons/userIcon.vue';
   <div>
     <header class="header">
       <span class="header__left">
-        <mytwitchIcon />
-        <span class="header__left--name">MIDUTCH</span>
-        <optionsIcon />
+        <mytwitchIcon alt="Icono de myTwitch" />
+        <span class="header__left--name">
+          <p>MIDUTCH</p>
+        </span>
+        <optionsIcon alt="Icono de opciones" />
       </span>
       <form class="header__center">
         <input type="text" placeholder="Search" class="header__center--input" />
-        <button class="header__center--search"><searchIcon /></button>
+        <button class="header__center--search">
+          <searchIcon alt="Icono de búsqueda" />
+        </button>
       </form>
       <span class="header__right">
-        <crownIcon />
+        <crownIcon alt="Icono de corona" />
         <button>Log In</button>
         <button>Sign Up</button>
-        <userIcon />
+        <userIcon alt="Icono del usuario" />
       </span>
     </header>
   </div>
@@ -32,17 +36,19 @@ import userIcon from '~/components/icons/userIcon.vue';
   background-color: $color-secondary;
   color: white;
   padding-left: 0.5em;
+  padding-right: 0.5em;
   height: 4em;
-  @include flex($justify-content: left);
+  @include flex($justify-content: space-between);
 
   &__left {
-    @include flex($justify-content: left);
+    @include flex($justify-content: left, $flex-grow: 0);
     &--name {
-      padding-right: 1em;
+      font-weight: bold;
+      font-size: 1.2em;
     }
   }
   &__center {
-    @include flex($justify-content: left, $flex-grow: 0);
+    @include flex($justify-content: center, $flex-grow: 0);
     width: auto;
     align-items: center;
     background-color: #2f2f34;
@@ -68,7 +74,7 @@ import userIcon from '~/components/icons/userIcon.vue';
   }
 
   &__right {
-    @include flex($justify-content: right);
+    @include flex($justify-content: right, $flex-grow: 0);
   }
 }
 </style>
