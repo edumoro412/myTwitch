@@ -23,8 +23,8 @@ import userIcon from '~/components/icons/userIcon.vue';
       </form>
       <span class="header__right">
         <crownIcon alt="Icono de corona" />
-        <button>Log In</button>
-        <button>Sign Up</button>
+        <button class="header__right--login">Log In</button>
+        <button class="header__right--signup">Sign Up</button>
         <userIcon alt="Icono del usuario" />
       </span>
     </header>
@@ -75,6 +75,31 @@ import userIcon from '~/components/icons/userIcon.vue';
 
   &__right {
     @include flex($justify-content: right, $flex-grow: 0);
+    &--login {
+      background-color: $color-tertiary;
+      border: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 0.6em 1em;
+      border-radius: 0.3em;
+      &:hover {
+        background-color: darken($color: $color-tertiary, $amount: 5);
+      }
+    }
+    &--signup {
+      padding: 0.6em 1em;
+      border: none;
+      border-radius: 0.3em;
+      color: white;
+      background-color: #179afc;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0e6fb8;
+      }
+    }
   }
 }
 </style>
