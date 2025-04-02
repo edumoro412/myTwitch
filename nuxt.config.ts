@@ -1,7 +1,7 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  css: ['~/assets/css/reset.css'],
 
   modules: [
     '@nuxt/eslint',
@@ -11,4 +11,13 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/ui',
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/main.scss" as *;`,
+        },
+      },
+    },
+  },
 });

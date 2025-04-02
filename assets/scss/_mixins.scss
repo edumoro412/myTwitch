@@ -1,0 +1,52 @@
+@mixin flex(
+  $direction: row,
+  $wrap: nowrap,
+  $justify-content: center,
+  $align-items: center,
+  $gap: 0.5em,
+  $flex-grow: 1
+) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  flex-grow: $flex-grow;
+}
+
+@mixin responsive($size: 64em) {
+  @media (width <= $size) {
+    @content;
+  }
+}
+
+@mixin button(
+  $padding: 0.6em 1em,
+  $cursor: pointer,
+  $border-radius: 0.3em,
+  $color: #ffffff,
+  $background-color: #000000
+) {
+  border: none;
+  padding: $padding;
+  cursor: $cursor;
+  border-radius: $border-radius;
+  transition: all 0.3s ease-in-out;
+  color: $color;
+  background-color: $background-color;
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin input(
+  $padding: 0.5em,
+  $border-radius: 0.5em,
+  $color: #000000,
+  $border: 1px solid #59585c,
+  $background-color: #ffffff
+) {
+  padding: $padding;
+  border-radius: $border-radius;
+  color: $color;
+  background-color: $background-color;
+  border: $border;
+}
