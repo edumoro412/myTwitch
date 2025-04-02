@@ -13,3 +13,9 @@
   gap: $gap;
   flex-grow: $flex-grow;
 }
+
+@mixin responsive($size: 64em) {
+  @media (width <= $size) {
+    @content;
+  }
+}
