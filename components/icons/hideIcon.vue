@@ -20,6 +20,6 @@
 
 <style scoped lang="scss">
 .icon {
-  @include flex($justify-content: left);
+  @include flex($justify-content: flex-end);
 }
 </style>

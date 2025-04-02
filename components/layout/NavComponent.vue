@@ -24,6 +24,8 @@ import hideIcon from '~/components/icons/hideIcon.vue';
   color: white;
 
   &__header {
+    padding: 0.5em;
+    width: 100%;
     @include flex($justify-content: left);
     & h1 {
       font-size: 1em;
