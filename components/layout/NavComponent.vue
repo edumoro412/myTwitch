@@ -19,7 +19,7 @@ import hideIcon from '~/components/icons/hideIcon.vue';
   );
   padding: 0.4em;
   width: 20vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 4em);
   background-color: $color;
   color: white;
 

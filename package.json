@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install",
-    "test": ""
+    "test": "",
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@alebat/default-alebat-config": "^0.8.0",
@@ -19,9 +20,9 @@
     "@nuxt/image": "^1.10.0",
     "@nuxt/scripts": "^0.11.5",
     "@nuxt/ui": "^3.0.2",
+    "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
     "@unhead/vue": "^2.0.2",
     "nuxt": "^3.16.1",
-    "typescript": "^5.8.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
@@ -37,6 +38,8 @@
     "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
     "sass-embedded": "^1.86.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
     "typescript-eslint": "^8.29.0"
   }
 }
