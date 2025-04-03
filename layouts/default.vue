@@ -17,5 +17,6 @@ import NavComponent from '~/components/layout/NavComponent.vue';
 <style scoped lang="scss">
 .main {
   @include flex($justify-content: left);
+  background-color: $color;
 }
 </style>
