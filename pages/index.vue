@@ -23,8 +23,6 @@ const { data: videoData } = await useFetch(
   }
 );
 
-console.log('Video data:', videoData.value);
-
 const hostname = ref('');
 onMounted(() => {
   hostname.value = window.location.hostname;
