@@ -13,7 +13,6 @@ const liveNow = streamsData?.value?.data || [];
     </p>
     <section class="main__streams">
       <article v-for="stream in liveNow" :key="stream.id">
-        <!-- Pasamos user_id como prop al componente ThumbnailComponent -->
         <ThumbnailComponent v-bind="stream" :user_id="stream.user_id" />
       </article>
     </section>
@@ -31,7 +30,6 @@ const liveNow = streamsData?.value?.data || [];
 <style lang="scss" scoped>
 .main {
   margin: 0;
-
   &__title {
     padding: 0.5em;
     font-size: 1.3em;
@@ -44,7 +42,6 @@ const liveNow = streamsData?.value?.data || [];
   }
 
   &__streams {
-    margin-bottom: 1em;
     @include flex(
       $justify-content: center,
       $align-items: flex-start,
@@ -75,5 +72,10 @@ const liveNow = streamsData?.value?.data || [];
   gap: 0.5em;
   align-items: flex-start;
   padding: 0.5em;
+  flex-wrap: wrap; // Aseguramos que los elementos se envuelvan
+
+  @media (max-width: 768px) {
+    justify-content: center; // Para pantallas pequeñas, centramos los elementos
+  }
 }
 </style>
