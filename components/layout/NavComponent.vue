@@ -12,6 +12,8 @@ import hideIcon from '~/components/icons/hideIcon.vue';
 
 <style scoped lang="scss">
 .nav {
+  height: 100vh;
+  min-width: 15vw;
   @include flex(
     $flex-grow: 0,
     $justify-content: flex-start,
@@ -19,7 +21,6 @@ import hideIcon from '~/components/icons/hideIcon.vue';
   );
   padding: 0.4em;
   width: 20vw;
-  min-height: calc(100vh - 4em);
   background-color: $color;
   color: white;
 
@@ -30,6 +31,9 @@ import hideIcon from '~/components/icons/hideIcon.vue';
     & h1 {
       font-size: 1em;
     }
+  }
+  @media (max-width: 1200px) {
+    display: none;
   }
 }
 </style>
