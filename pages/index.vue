@@ -2,7 +2,6 @@
 import ThumbnailComponent from '~/components/api/ThumbnailComponent.vue';
 
 const { data: streamsData } = await useFetch('/api/twitch-top-streams');
-
 const liveNow = streamsData?.value?.data || [];
 </script>
 
@@ -13,7 +12,8 @@ const liveNow = streamsData?.value?.data || [];
     </p>
     <section class="main__streams">
       <article v-for="stream in liveNow" :key="stream.id">
-        <ThumbnailComponent v-bind="stream" />
+        <!-- Pasamos user_id como prop al componente ThumbnailComponent -->
+        <ThumbnailComponent v-bind="stream" :user_id="stream.user_id" />
       </article>
     </section>
   </div>
