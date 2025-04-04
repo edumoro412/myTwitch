@@ -55,7 +55,7 @@ const info = data.value?.data || [];
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1240px) {
     display: none;
   }
 }
