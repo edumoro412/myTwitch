@@ -1,22 +1,22 @@
-export default defineEventHandler(async () => {
+export default async function getTwitchToken() {
   const config = useRuntimeConfig();
 
   const clientId = config.public.twitchClientId;
   const clientSecret = config.twitchClientSecret;
 
   const authUrl = 'https://id.twitch.tv/oauth2/token';
-  const params = new URLSearchParams({
-    client_id: clientId,
-    client_secret: clientSecret,
-    grant_type: 'client_credentials',
-  });
+  const params = new URLSearchParams();
+  params.append('client_id', clientId);
+  params.append('client_secret', clientSecret);
+  params.append('grant_type', 'client_credentials');
 
   try {
-    const response = await fetch(`${authUrl}?${params}`, {
+    const response = await fetch(`${authUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      body: params,
     });
 
     if (!response.ok) {
@@ -24,7 +24,7 @@ export default defineEventHandler(async () => {
     }
 
     const data = await response.json();
-    return { token: data.access_token };
+    return data.access_token;
   } catch (error) {
     console.error('Error fetching Twitch token:', error);
     throw createError({
@@ -32,4 +32,4 @@ export default defineEventHandler(async () => {
       message: 'Failed to fetch Twitch token',
     });
   }
-});
+}
