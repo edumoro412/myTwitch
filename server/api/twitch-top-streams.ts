@@ -22,7 +22,7 @@ export default async function getStreams(): Promise<TwitchResponse> {
     console.log('Token obtenido:', token);
 
     const response = await fetch(
-      'https://api.twitch.tv/helix/streams?first=6',
+      'https://api.twitch.tv/helix/streams?first=9',
       {
         headers: {
           Authorization: `Bearer ${token}`,
