@@ -17,8 +17,8 @@ const props = defineProps<Stream>();
 
 const thumbnailUrl = computed(() => {
   return props.thumbnail_url
-    ?.replace('{width}', '450')
-    ?.replace('{height}', '240');
+    ?.replace('{width}', '300')
+    ?.replace('{height}', '140');
 });
 
 const { data: profilePic } = await useFetch('/api/twitch-profile-picture', {
@@ -34,7 +34,7 @@ const pictureUrl = profilePic.value?.data[0]?.profile_image_url;
       <img
         :src="thumbnailUrl"
         :alt="`Stream thumbnail for ${props.user_name}`"
-        class="thumbnail-image"
+        class="stream__thumbnail--image"
         loading="lazy"
       />
     </div>
