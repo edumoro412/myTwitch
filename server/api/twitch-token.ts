@@ -26,10 +26,10 @@ export default async function getTwitchToken() {
     const data = await response.json();
     return data.access_token;
   } catch (error) {
-    console.error('Error fetching Twitch token:', error);
-    throw createError({
-      statusCode: 500,
-      message: 'Failed to fetch Twitch token',
-    });
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : 'Failed to fetch Twitch token data'
+    );
   }
 }

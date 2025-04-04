@@ -19,6 +19,10 @@ export default async function getRecommendedChannels() {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Error al obtener los streams recomendados:', error);
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : 'Failed to fetch Twitch streams data'
+    );
   }
 }

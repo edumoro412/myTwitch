@@ -44,14 +44,10 @@ export default async function getStreams(): Promise<TwitchResponse> {
     console.log('Datos recibidos:', data);
     return data;
   } catch (error) {
-    console.error('=================== ERROR ===================');
-    console.error('Error al obtener streams de Twitch:', error);
-    throw createError({
-      statusCode: 500,
-      message:
-        error instanceof Error
-          ? error.message
-          : 'Failed to fetch Twitch streams data',
-    });
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : 'Failed to fetch Twitch top streams data'
+    );
   }
 }
