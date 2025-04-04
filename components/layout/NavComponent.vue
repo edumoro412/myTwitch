@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import hideIcon from '../icons/hideIcon.vue';
 
 const { data } = await useFetch('/api/twitch-recommended-channels');
 const info = data.value?.data || [];
