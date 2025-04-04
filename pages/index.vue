@@ -3,7 +3,7 @@ import ThumbnailComponent from '~/components/api/ThumbnailComponent.vue';
 
 const { data: streamsData } = await useFetch('/api/twitch-top-streams');
 
-const AhoraDirectos = streamsData?.value?.data || [];
+const liveNow = streamsData?.value?.data || [];
 </script>
 
 <template>
@@ -12,11 +12,7 @@ const AhoraDirectos = streamsData?.value?.data || [];
       <span class="main__title--blue">Live channels</span> we think you´ll like
     </p>
     <section class="main__streams">
-      <article
-        v-for="stream in AhoraDirectos"
-        :key="stream.id"
-        class="main__streans--article"
-      >
+      <article v-for="stream in liveNow" :key="stream.id">
         <ThumbnailComponent v-bind="stream" />
       </article>
     </section>
