@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CategoriesComponent from '~/components/api/CategoriesComponent.vue';
 import ThumbnailComponent from '~/components/api/ThumbnailComponent.vue';
 
 const { data: streamsData } = await useFetch('/api/twitch-top-streams');
@@ -16,12 +17,21 @@ const liveNow = streamsData?.value?.data || [];
         <ThumbnailComponent v-bind="stream" :user_id="stream.user_id" />
       </article>
     </section>
+    <hr />
+    <p class="categories__title">
+      <span class="categories__title--blue">Categories</span> we think you´ll
+      like
+    </p>
+    <section class="categories">
+      <CategoriesComponent />
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .main {
   margin: 0;
+
   &__title {
     padding: 0.5em;
     font-size: 1.3em;
@@ -34,6 +44,7 @@ const liveNow = streamsData?.value?.data || [];
   }
 
   &__streams {
+    margin-bottom: 1em;
     @include flex(
       $justify-content: center,
       $align-items: flex-start,
@@ -45,5 +56,24 @@ const liveNow = streamsData?.value?.data || [];
       grid-row-start: 2;
     }
   }
+}
+
+.categories__title {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 1em;
+  color: white;
+  text-align: center;
+  &--blue {
+    color: rgb(38, 152, 239);
+  }
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5em;
+  align-items: flex-start;
+  padding: 0.5em;
 }
 </style>
