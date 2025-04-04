@@ -1,8 +1,28 @@
 <script setup lang="ts">
-import hideIcon from '~/components/icons/hideIcon.vue';
+import { ref } from 'vue';
 
 const { data } = await useFetch('/api/twitch-recommended-channels');
 const info = data.value?.data || [];
+
+const profileImageUrls = ref<string[]>([]);
+
+const fetchProfileImages = async () => {
+  profileImageUrls.value = await Promise.all(
+    info.map(async (profile) => {
+      const { data } = await useFetch('/api/twitch-profile-picture', {
+        query: { id: profile.user_id },
+      });
+      return data.value?.data[0]?.profile_image_url;
+    })
+  );
+};
+
+await fetchProfileImages();
+
+const profiles = info.map((profile: object, index: number) => ({
+  ...profile,
+  profile_image_url: profileImageUrls.value[index],
+}));
 </script>
 
 <template>
@@ -13,11 +33,17 @@ const info = data.value?.data || [];
     </header>
     <section class="channels__list">
       <article
-        v-for="profile in info"
+        v-for="profile in profiles"
         :key="profile.user_id"
         class="channel__card"
       >
-        <div class="channel__avatar">(Imagen)</div>
+        <div class="channel__avatar">
+          <img
+            :src="profile.profile_image_url"
+            alt="Profile picture"
+            class="channel__avatar--img"
+          />
+        </div>
         <div class="channel__details">
           <span class="channel__details--username">{{
             profile.user_name
@@ -76,7 +102,7 @@ const info = data.value?.data || [];
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: darken($color, 5%);
+    background-color: #3a3a3d;
   }
 }
 
@@ -86,6 +112,13 @@ const info = data.value?.data || [];
   border-radius: 50%;
   background-color: #3a3a3d;
   @include flex(center, center);
+
+  &--img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 .channel__details {

@@ -12,7 +12,6 @@ interface Stream {
 }
 
 const props = defineProps<Stream>();
-console.log('Props:', props);
 
 const thumbnailUrl = computed(() => {
   return props.thumbnail_url
