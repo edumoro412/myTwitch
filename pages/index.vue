@@ -11,7 +11,6 @@ const AhoraDirectos = streamsData?.value?.data || [];
     <p class="main__title">
       <span class="main__title--blue">Live channels</span> we think you´ll like
     </p>
-    <h1>Videos de Twitch</h1>
     <section class="main__streams">
       <article
         v-for="stream in AhoraDirectos"
@@ -26,21 +25,24 @@ const AhoraDirectos = streamsData?.value?.data || [];
 
 <style lang="scss" scoped>
 .main {
+  margin: 0;
   &__title {
-    padding-top: 1em;
+    padding: 0.5em;
     font-size: 1.3em;
     color: white;
     font-weight: bold;
-
+    @include flex($justify-content: center, $align-items: center);
     &--blue {
       color: rgb(38, 152, 239);
     }
   }
 
   &__streams {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    @include flex(
+      $justify-content: center,
+      $align-items: flex-start,
+      $wrap: wrap
+    );
     gap: 4em;
 
     &--article {
