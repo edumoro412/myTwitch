@@ -16,8 +16,8 @@ console.log('Props:', props);
 
 const thumbnailUrl = computed(() => {
   return props.thumbnail_url
-    ?.replace('{width}', '400')
-    ?.replace('{height}', '220');
+    ?.replace('{width}', '450')
+    ?.replace('{height}', '240');
 });
 </script>
 
