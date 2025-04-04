@@ -14,6 +14,7 @@ const updatedCategories = bestCategories.map((categorie) => {
   return { ...categorie, box_art_url: updatedBoxArtUrl };
 });
 </script>
+
 <template>
   <article
     v-for="categorie in updatedCategories"
@@ -35,16 +36,25 @@ const updatedCategories = bestCategories.map((categorie) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &__name {
     text-align: center;
     color: white;
     font-weight: bold;
     font-size: 1.2em;
     margin-top: 10px;
+  }
 
-    &__image {
-      object-fit: cover;
-    }
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category {
+    width: 45%;
   }
 }
 </style>
