@@ -9,13 +9,13 @@ import userIcon from '~/components/icons/userIcon.vue';
 <template>
   <div>
     <header class="header">
-      <span class="header__left">
+      <NuxtLink class="header__left" to="/">
         <mytwitchIcon alt="Icono de myTwitch" />
         <span class="header__left--name">
           <p>MYTWITCH</p>
         </span>
         <optionsIcon alt="Icono de opciones" />
-      </span>
+      </NuxtLink>
       <form class="header__center" name="search">
         <input type="text" placeholder="Search" class="header__center--input" />
         <button class="header__center--search">
@@ -44,6 +44,8 @@ import userIcon from '~/components/icons/userIcon.vue';
   @include responsive();
 
   &__left {
+    text-decoration: none;
+    color: white;
     @include flex($justify-content: left, $flex-grow: 0);
 
     &--name {

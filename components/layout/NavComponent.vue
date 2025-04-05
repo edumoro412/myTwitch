@@ -33,7 +33,8 @@ const profiles = info.map((profile: object, index: number) => ({
       <hideIcon />
     </header>
     <section class="channels__list">
-      <article
+      <NuxtLink
+        :to="`/stream/${profile.user_id}`"
         v-for="profile in profiles"
         :key="profile.user_id"
         class="channel__card"
@@ -55,7 +56,7 @@ const profiles = info.map((profile: object, index: number) => ({
           <span class="channel__viewes-liveindicator">🔴</span>
           <span>{{ profile.viewer_count }}</span>
         </div>
-      </article>
+      </NuxtLink>
     </section>
   </nav>
 </template>
@@ -101,6 +102,8 @@ const profiles = info.map((profile: object, index: number) => ({
   padding: 0.5em;
   border-radius: 4px;
   transition: background-color 0.2s;
+  text-decoration: none;
+  color: white;
 
   &:hover {
     background-color: #3a3a3d;
