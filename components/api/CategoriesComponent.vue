@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const data = await useFetch('/api/twitch-categories?first=6');
-const bestCategories = data.data.value.slice(0, 6);
+const bestCategories = data.data.value.slice(0, 5);
 console.log(bestCategories);
 
 const width = 200;

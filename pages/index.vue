@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CategoriesComponent from '~/components/api/CategoriesComponent.vue';
 import ThumbnailComponent from '~/components/api/ThumbnailComponent.vue';
+import ButtonsComponent from '~/components/api/ButtonsComponent.vue';
 
 const { data: streamsData } = await useFetch('/api/twitch-top-streams');
 const liveNow = streamsData?.value?.data || [];
@@ -24,6 +25,7 @@ const liveNow = streamsData?.value?.data || [];
     <section class="categories">
       <CategoriesComponent />
     </section>
+    <ButtonsComponent />
   </div>
 </template>
 
