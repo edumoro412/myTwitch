@@ -10,9 +10,7 @@ const { data } = await useFetch('/api/twitch-user-info', {
   },
 });
 
-console.log('aqui esta la da', data);
 const user_name = data.value?.data[0].user_name.toString();
-console.log('===============', user_name);
 </script>
 
 <template>
