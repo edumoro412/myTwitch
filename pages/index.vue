@@ -13,9 +13,14 @@ const liveNow = streamsData?.value?.data || [];
       <span class="main__title--blue">Live channels</span> we think you´ll like
     </p>
     <section class="main__streams">
-      <article v-for="stream in liveNow" :key="stream.id">
-        <ThumbnailComponent v-bind="stream" :user_id="stream.user_id" />
-      </article>
+      <NuxtLink
+        v-for="stream in liveNow"
+        :key="stream.id"
+        :to="`/stream/${stream.user_id}`"
+        v-bind="stream"
+      >
+        <ThumbnailComponent v-bind="stream" />
+      </NuxtLink>
     </section>
     <hr />
     <p class="categories__title">
@@ -30,6 +35,9 @@ const liveNow = streamsData?.value?.data || [];
 </template>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
 .main {
   margin: 0;
   &__title {
@@ -74,10 +82,10 @@ const liveNow = streamsData?.value?.data || [];
   gap: 0.5em;
   align-items: flex-start;
   padding: 0.5em;
-  flex-wrap: wrap; // Aseguramos que los elementos se envuelvan
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    justify-content: center; // Para pantallas pequeñas, centramos los elementos
+    justify-content: center;
   }
 }
 </style>
