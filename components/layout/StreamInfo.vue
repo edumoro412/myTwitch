@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import userIconRed from '../icons/userIconRed.vue';
 
 const props = defineProps({
   user_name: String,
@@ -25,7 +26,7 @@ const props = defineProps({
       </div>
       <div class="info__rest--title">
         <span class="title">{{ title }}</span>
-        <span class="viewers">{{ viewers }}</span>
+        <span class="viewers"><userIconRed />{{ viewers }}</span>
       </div>
       <div class="info__rest--category">{{ game_name }}</div>
       <div class="info__rest--tags">
@@ -97,6 +98,8 @@ const props = defineProps({
     }
 
     &--title {
+      display: flex;
+      justify-content: space-between;
       font-weight: bold;
       margin: 0.3rem 0;
     }
@@ -121,5 +124,11 @@ const props = defineProps({
       }
     }
   }
+}
+.viewers {
+  display: flex;
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
 }
 </style>
