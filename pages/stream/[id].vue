@@ -1,40 +1,64 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-
+import { ref } from 'vue';
+import StreamInfo from '@/components/layout/StreamInfo.vue';
+import TwitchChat from '@/components/layout/TwitchChat.vue';
 const route = useRoute();
 const userId = route.params.id.toString();
 
-const { data } = await useFetch('/api/twitch-user-info', {
-  query: {
-    userId,
-  },
-});
+const user_name = ref('');
+const display_name = ref('');
+const profile_image_url = ref('');
+const title = ref('');
+const game_name = ref('');
+const viewers = ref(0);
+const tags = ref<string[]>([]);
+const picture = ref('');
 
-const user_name = data.value?.data[0].user_name.toString();
+try {
+  const { data } = await useFetch('/api/twitch-user-info', {
+    query: { userId },
+  });
+
+  const { data: profileData } = await useFetch('/api/twitch-profile-picture', {
+    query: { id: userId },
+  });
+  const info = data.value?.data[0];
+  viewers.value = info.viewer_count;
+  user_name.value = info.user_name;
+  display_name.value = info.display_name;
+  profile_image_url.value = info.profile_image_url;
+  title.value = info.title;
+  game_name.value = info.game_name;
+  tags.value = info.tags || [];
+  picture.value = profileData.value?.data[0].profile_image_url;
+} catch (err) {
+  console.error('Error cargando datos del stream', err);
+}
 </script>
 
 <template>
   <div class="container">
     <article class="container__stream">
       <iframe
-        width="560"
-        height="315"
         :src="`https://player.twitch.tv/?channel=${user_name}&parent=localhost`"
         frameborder="0"
         allowfullscreen
         class="container__stream--stream"
       ></iframe>
+      <StreamInfo
+        :user_name="user_name"
+        :display_name="display_name"
+        :title="title"
+        :game_name="game_name"
+        :viewers="viewers"
+        :tags="tags"
+        :picture="picture"
+      />
     </article>
 
     <article class="container__chat">
-      <iframe
-        width="350"
-        height="315"
-        :src="`https://www.twitch.tv/embed/${user_name}/chat?parent=localhost&darkpopout`"
-        frameborder="0"
-        scrolling="no"
-        class="container__chat--chat"
-      ></iframe>
+      <TwitchChat :user_name="user_name" />
     </article>
   </div>
 </template>
@@ -42,13 +66,19 @@ const user_name = data.value?.data[0].user_name.toString();
 <style scoped lang="scss">
 .container {
   width: 100%;
-  margin: 0;
   display: flex;
 
   &__stream {
+    display: flex;
+    flex-direction: column;
+
     &--stream {
       width: 60vw;
-      height: 80vh;
+      height: 60vh;
+      @media (max-width: 1240px) {
+        width: 80vw;
+        height: 60vh;
+      }
     }
   }
 
