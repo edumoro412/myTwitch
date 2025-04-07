@@ -28,6 +28,6 @@
 
 <style scoped lang="scss">
 .usericon {
-  @include flex();
+  @include flex-center();
 }
 </style>
