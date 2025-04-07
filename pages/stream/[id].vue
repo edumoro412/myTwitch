@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { ref } from 'vue';
-import StreamInfo from '@/components/layout/StreamInfo.vue';
-import TwitchChat from '@/components/layout/TwitchChat.vue';
+import TwitchChat from '~/components/layout/TwitchChat.vue';
+import StreamInfo from '~/components/layout/StreamInfo.vue';
 const route = useRoute();
 const userId = route.params.id.toString();
 
@@ -14,7 +14,6 @@ const game_name = ref('');
 const viewers = ref(0);
 const tags = ref<string[]>([]);
 const picture = ref('');
-
 try {
   const { data } = await useFetch('/api/twitch-user-info', {
     query: { userId },
@@ -23,7 +22,13 @@ try {
   const { data: profileData } = await useFetch('/api/twitch-profile-picture', {
     query: { id: userId },
   });
-  const info = data.value?.data[0];
+
+  const info = data.value?.data?.[0];
+
+  if (!info) {
+    navigateTo('/');
+  }
+
   viewers.value = info.viewer_count;
   user_name.value = info.user_name;
   display_name.value = info.display_name;
@@ -31,9 +36,10 @@ try {
   title.value = info.title;
   game_name.value = info.game_name;
   tags.value = info.tags || [];
-  picture.value = profileData.value?.data[0].profile_image_url;
+  picture.value = profileData.value?.data?.[0]?.profile_image_url;
 } catch (err) {
   console.error('Error cargando datos del stream', err);
+  navigateTo('/');
 }
 </script>
 
