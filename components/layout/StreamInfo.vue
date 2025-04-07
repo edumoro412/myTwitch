@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import userIconRed from '../icons/userIconRed.vue';
 
-const props = defineProps({
+defineProps({
   user_name: String,
   display_name: String,
   title: String,
   game_name: String,
   viewers: Number,
-  tags: Array,
+  tags: Array as () => string[],
   picture: String,
 });
 </script>
@@ -38,16 +37,15 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .info {
-  display: flex;
-  align-items: center;
+  @include flex-center;
   gap: 1rem;
   padding: 1rem;
-  background-color: $color;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 
   &__picture {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -75,23 +73,16 @@ const props = defineProps({
         }
 
         .follow-btn {
-          background-color: #199afc;
-          color: white;
-          transition: 0.3s ease-in-out;
+          @include button-style(var(--color-accent));
           &:hover {
-            background-color: #0c60b4;
-            transform: scale(1.1);
+            background-color: var(--color-accent-dark);
           }
         }
 
         .sub-btn {
-          background-color: $color-tertiary;
-          color: white;
-          transition: 0.3s ease-in-out;
-
+          @include button-style(var(--color-tertiary));
           &:hover {
-            background-color: #3d3d3d;
-            transform: scale(1.1);
+            background-color: var(--color-secondary);
           }
         }
       }
@@ -117,17 +108,14 @@ const props = defineProps({
       gap: 0.4rem;
 
       .tag {
-        background-color: #27272a;
-        padding: 0.2rem 0.6rem;
-        border-radius: 1rem;
-        font-size: 0.8rem;
+        @include tag-style;
       }
     }
   }
 }
 .viewers {
   display: flex;
-  color: red;
+  color: var(--color-red);
   font-weight: bold;
   font-size: 1rem;
 }

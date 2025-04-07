@@ -34,7 +34,7 @@ import userIcon from '~/components/icons/userIcon.vue';
 
 <style lang="scss">
 .header {
-  background-color: $color-secondary;
+  background-color: var(--color-secondary);
   color: white;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -49,6 +49,7 @@ import userIcon from '~/components/icons/userIcon.vue';
     @include flex($justify-content: left, $flex-grow: 0);
 
     &--name {
+      margin: 0 0.5em;
       font-weight: bold;
       font-size: 1.2em;
       @media (max-width: 732px) {
@@ -77,8 +78,8 @@ import userIcon from '~/components/icons/userIcon.vue';
 
     &--input {
       width: 20em;
-      height: 3.5em;
-      @include input($background-color: $color-secondary, $color: grey);
+      height: 3em;
+      @include input($background-color: var(--color-secondary), $color: grey);
 
       @media (max-width: 732px) {
         width: 11em;
@@ -92,7 +93,7 @@ import userIcon from '~/components/icons/userIcon.vue';
     }
 
     &--search {
-      background-color: $color-tertiary;
+      background-color: var(--color-tertiary);
       border: none;
       cursor: pointer;
       padding: 0.5em;
@@ -119,7 +120,9 @@ import userIcon from '~/components/icons/userIcon.vue';
     @include flex($justify-content: right, $flex-grow: 0);
 
     &--login {
-      @include button($color: white, $background-color: $color-tertiary);
+      color: white;
+      margin: 0 0.5em;
+      @include button($color: white, $background-color: var(--color-tertiary));
 
       @media (max-width: 500px) {
         font-size: 0.5em;
@@ -131,6 +134,8 @@ import userIcon from '~/components/icons/userIcon.vue';
     }
 
     &--signup {
+      color: white;
+      margin: 0 0.5em;
       @include button($color: white, $background-color: #179afc);
 
       @media (max-width: 500px) {
