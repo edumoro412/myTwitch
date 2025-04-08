@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/reset.css'],
   app: {
-    baseURL: '/myTwitch/',
+    baseURL: '/',
   },
   modules: [
     '@nuxt/eslint',
@@ -21,6 +21,9 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  nitro: {
+    preset: 'vercel',
   },
   runtimeConfig: {
     public: {
