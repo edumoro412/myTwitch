@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/reset.css'],
   app: {
-    baseURL: '/',
+    baseURL: '/myTwitch/',
   },
   modules: [
     '@nuxt/eslint',
