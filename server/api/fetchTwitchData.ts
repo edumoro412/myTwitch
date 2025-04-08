@@ -21,7 +21,11 @@ export default async function fetchTwitchData(endpoint: string) {
       );
     }
 
-    return response.json();
+    const result = await response.json();
+    if (!result || !result.data) {
+      return { data: [] };
+    }
+    return result;
   } catch (error) {
     throw new Error(
       error instanceof Error ? error.message : 'Failed to fetch Twitch data'
