@@ -2,7 +2,7 @@ import fetchTwitchData from './fetchTwitchData';
 
 export default async function getStreams() {
   try {
-    const { data } = await fetchTwitchData('streams?first=9');
+    const { data } = await fetchTwitchData('streams?first=6');
 
     if (!Array.isArray(data)) {
       return { data: [] };
