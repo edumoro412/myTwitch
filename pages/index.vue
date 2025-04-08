@@ -48,6 +48,7 @@ a {
     @include flex($justify-content: center, $align-items: center);
     &--blue {
       color: rgb(38, 152, 239);
+      margin: 0 0.3em;
     }
   }
 
