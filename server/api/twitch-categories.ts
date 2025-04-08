@@ -1,17 +1,32 @@
 import fetchTwitchData from './fetchTwitchData';
 
 export default async function getTrendingCategories() {
-  const streamsData = await fetchTwitchData('streams?first=100');
+  try {
+    const streamsData = await fetchTwitchData('streams?first=100');
 
-  if (!streamsData?.data) return [];
+    if (!streamsData?.data || !Array.isArray(streamsData.data)) {
+      console.error('Datos de streams no válidos:', streamsData);
+      return [];
+    }
 
-  const gameIds = [...new Set(streamsData.data.map((s: any) => s.game_id))];
+    const validStreams = streamsData.data.filter((stream) => stream?.game_id);
 
-  if (gameIds.length === 0) return [];
+    if (validStreams.length === 0) {
+      console.warn('No se encontraron streams con game_id válido');
+      return [];
+    }
 
-  const categoriesData = await fetchTwitchData(
-    `games?id=${gameIds.slice(0, 100).join('&id=')}`
-  );
+    const gameIds = [...new Set(validStreams.map((s) => s.game_id))];
 
-  return categoriesData.data;
+    if (!gameIds || gameIds.length === 0) return [];
+
+    const categoriesData = await fetchTwitchData(
+      `games?id=${gameIds.slice(0, 100).join('&id=')}`
+    );
+
+    return categoriesData?.data || [];
+  } catch (error) {
+    console.error('Error en getTrendingCategories:', error);
+    return [];
+  }
 }
