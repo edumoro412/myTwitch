@@ -47,10 +47,12 @@ try {
   <div class="container">
     <article class="container__stream">
       <iframe
-        :src="`https://player.twitch.tv/?channel=${user_name}&parent=localhost`"
+        src="https://player.twitch.tv/?channel=NOMBRE_CANAL&parent=my-twitch.vercel.app&autoplay=true&muted=false"
         frameborder="0"
-        allowfullscreen
-        class="container__stream--stream"
+        allowfullscreen="true"
+        scrolling="no"
+        height="100%"
+        width="100%"
       ></iframe>
       <StreamInfo
         :user_name="user_name"
