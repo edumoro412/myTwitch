@@ -24,6 +24,20 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'vercel',
+    vercel: {
+      regions: ['iad1'],
+      functions: {
+        'api/**': {
+          memory: 3008,
+          maxDuration: 30,
+        },
+      },
+    },
+    storage: {
+      cache: {
+        driver: 'memory',
+      },
+    },
   },
   runtimeConfig: {
     public: {
