@@ -1,17 +1,35 @@
-@mixin flex(
-  $direction: row,
-  $wrap: nowrap,
-  $justify-content: center,
-  $align-items: center,
-  $gap: 0.5em,
-  $flex-grow: 1
-) {
+@mixin flex-center {
   display: flex;
-  flex-wrap: $wrap;
-  justify-content: $justify-content;
-  align-items: $align-items;
-  gap: $gap;
-  flex-grow: $flex-grow;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+@mixin button-style($bg-color, $text-color: var(--color-text)) {
+  padding: 0.3em 0.6em;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  background-color: $bg-color;
+  color: $text-color;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin tag-style {
+  background-color: var(--color-tag-bg);
+  padding: 0.2em 0.6em;
+  border-radius: 1em;
+  font-size: 0.8em;
 }
 
 @mixin responsive($size: 64em) {
@@ -20,33 +38,52 @@
   }
 }
 
-@mixin button(
-  $padding: 0.6em 1em,
-  $cursor: pointer,
-  $border-radius: 0.3em,
-  $color: #ffffff,
-  $background-color: #000000
+@mixin flex(
+  $justify-content: center,
+  $align-items: center,
+  $gap: 0,
+  $flex-grow: 0,
+  $wrap: nowrap
 ) {
-  border: none;
-  padding: $padding;
-  cursor: $cursor;
-  border-radius: $border-radius;
-  transition: all 0.3s ease-in-out;
-  color: $color;
-  background-color: $background-color;
-  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  flex-grow: $flex-grow;
+  flex-wrap: $wrap;
 }
 
-@mixin input(
-  $padding: 0.5em,
-  $border-radius: 0.5em,
-  $color: #000000,
-  $border: 1px solid #59585c,
-  $background-color: #ffffff
+@mixin input($background-color, $color, $border-radius: 0.25em) {
+  background-color: $background-color;
+  color: $color;
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+  }
+}
+
+@mixin button(
+  $padding: 0.5em 1em,
+  $background-color: var(--color-primary),
+  $color: var(--color-text)
 ) {
   padding: $padding;
-  border-radius: $border-radius;
-  color: $color;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
   background-color: $background-color;
-  border: $border;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
