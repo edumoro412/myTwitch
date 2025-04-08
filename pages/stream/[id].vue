@@ -47,7 +47,7 @@ try {
   <div class="container">
     <article class="container__stream">
       <iframe
-        :src="`https://player.twitch.tv/?channel=${user_name}&parent=https://my-twitch-rh19fpb7q-edumoro412s-projects.vercel.app/`"
+        :src="`https://player.twitch.tv/?channel=${user_name}&parent=https://my-twitch.vercel.app/`"
         frameborder="0"
         allowfullscreen
         class="container__stream--stream"
