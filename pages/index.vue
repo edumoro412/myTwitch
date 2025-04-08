@@ -10,7 +10,7 @@ const liveNow = streamsData?.value?.data || [];
 <template>
   <div class="main">
     <p class="main__title">
-      <span class="main__title--blue">Live channels</span> we think you´ll like
+      <span class="main__title--blue">Live channels </span> we think you´ll like
     </p>
     <section class="main__streams">
       <NuxtLink
@@ -71,6 +71,7 @@ a {
   margin: 1em;
   color: white;
   text-align: center;
+  padding: 0.5em;
   &--blue {
     color: rgb(38, 152, 239);
   }
