@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <iframe
-    :src="`https://www.twitch.tv/embed/${user_name}/chat?parent=localhost&darkpopout`"
+    :src="`https://www.twitch.tv/embed/${user_name}/chat?parent=https://my-twitch-asd.vercel.app&darkpopout`"
     frameborder="0"
     scrolling="no"
     class="container__chat--chat"
