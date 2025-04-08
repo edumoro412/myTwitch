@@ -1,0 +1,21 @@
+<script setup lang="ts">
+const props = defineProps({
+  user_name: String,
+});
+</script>
+
+<template>
+  <iframe
+    :src="`https://www.twitch.tv/embed/${user_name}/chat?parent=https://my-twitch-3p2wvg0y9-edumoro412s-projects.vercel.app&darkpopout`"
+    frameborder="0"
+    scrolling="no"
+    class="container__chat--chat"
+  ></iframe>
+</template>
+
+<style scoped lang="scss">
+.container__chat--chat {
+  width: 20vw;
+  height: 94vh;
+}
+</style>
